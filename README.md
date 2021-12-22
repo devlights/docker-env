@@ -1,4 +1,4 @@
 # docker-env
 
-This is Dockerfile storage for yourself
+This is Dockerfile storage for myself
 
