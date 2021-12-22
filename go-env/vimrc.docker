@@ -1,0 +1,28 @@
+set nocompatible
+syntax on
+filetype plugin indent on
+
+set number
+set ruler
+set showcmd
+set showmode
+set showmatch
+set laststatus=2
+set background=dark
+
+set nobackup
+set noswapfile
+
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set wrapscan
+
+set nolist
+set autoindent
+
+set mouse=a
+set clipboard+=autoselect
+set clipboard+=unnamed
+set clipboard+=unnamedplus
