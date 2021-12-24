@@ -10,7 +10,8 @@ ARG USERNAME=dev
 ARG USERPASSWD=dev
 ARG GROUPNAME=dev
 ARG SUDOGROUP=%dev
-ARG PKGS="make vim exuberant-ctags sudo tzdata locales file iputils-ping net-tools ncat psmisc"
+ARG PKGS1="sudo tzdata locales file iputils-ping net-tools psmisc"
+ARG PKGS2="make bat vim exuberant-ctags less ncat"
 
 #---------------------------------------------
 # ROOT OPERATIONS
@@ -19,7 +20,7 @@ USER root
 # >>> Install packages
 RUN <<EOF
 	apt-get update -q
-	DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends ${PKGS}
+	DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends ${PKGS1} ${PKGS2}
 EOF
 # >>> Build locales
 RUN <<EOF
@@ -47,6 +48,11 @@ ENV TZ Asia/Tokyo
 USER dev
 # >>> Install dotnet packages
 RUN <<EOF
+EOF
+# >>> Misc user operations
+RUN <<EOF
+	echo 'alias bat=batcat' >> /home/${USERNAME}/.bashrc
+	echo 'alias cat=bat' >> /home/${USERNAME}/.bashrc
 EOF
 # >>> Copy vim config file
 COPY ./vimrc.docker /home/${USERNAME}/.vimrc
