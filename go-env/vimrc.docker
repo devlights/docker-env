@@ -9,6 +9,7 @@ set showmode
 set showmatch
 set laststatus=2
 set background=dark
+set autoread
 
 set nobackup
 set noswapfile
