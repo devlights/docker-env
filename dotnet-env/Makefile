@@ -1,5 +1,5 @@
 build:
-	docker buildx build \
+	docker image build \
 		--tag dotnet-env \
 		--file Dockerfile \
 		--build-arg UID=$(shell id -u) \

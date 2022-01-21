@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1-labs
-FROM golang:rc-bullseye
+FROM buildpack-deps:stable-scm
 
 #---------------------------------------------
 # BUILD ARGUMENTS
@@ -68,13 +68,6 @@ ENV PATH=$PATH:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin/
 ENV MANPATH="$MANPATH:/home/linuxbrew/.linuxbrew/share/man"
 ENV INFOPATH="$INFOPATH:/home/linuxbrew/.linuxbrew/share/info"
 ENV HOMEBREW_NO_AUTO_UPDATE=1
-# >>> Install go packages
-RUN <<EOF
-	go install golang.org/x/tools/cmd/goimports@latest
-	go install honnef.co/go/tools/cmd/staticcheck@latest
-	go install github.com/go-delve/delve/cmd/dlv@latest
-	go clean -modcache
-EOF
 # >>> Misc user operations
 RUN <<EOF
 	echo 'alias bat=batcat' >> /home/${USERNAME}/.bashrc
@@ -86,5 +79,5 @@ WORKDIR /workspace
 #---------------------------------------------
 # MISC
 #---------------------------------------------
-EXPOSE 8888
+EXPOSE 8887
 VOLUME /workspace

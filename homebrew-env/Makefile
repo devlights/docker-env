@@ -1,6 +1,6 @@
 build:
 	docker image build \
-		--tag go-env \
+		--tag homebrew-env \
 		--file Dockerfile \
 		--build-arg UID=$(shell id -u) \
 		--build-arg GID=$(shell id -u) \
@@ -13,6 +13,6 @@ run:
 		--tty \
 		--rm \
 		--mount type=bind,src=${PWD},dst=/workspace \
-		--publish 8888:8888 \
-		go-env
+		--publish 8887:8887 \
+		homebrew-env
 
